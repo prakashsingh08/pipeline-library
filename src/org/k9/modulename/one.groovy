@@ -1,4 +1,4 @@
-package org.k9.first
+package org.k9.modulename
 
 class One implements Serializable {
   def config
