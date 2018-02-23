@@ -60,8 +60,8 @@ class ArtifactStorage implements Serializable {
 
 			this.script.echo "2"
 			def url = "https://www.googleapis.com"
-			def client = new RESTClient(url)
-//			def client = new HTTPBuilder(url)
+//			def client = new RESTClient(url)
+			def client = new HTTPBuilder(url)
 			this.script.echo "3"
 			this.script.echo "${this.script.env.WORKSPACE}"
 			//def file1 = new File("/tmp/workspace/new/target/spring-boot-rest-example-0.5.0.war")
@@ -70,6 +70,7 @@ class ArtifactStorage implements Serializable {
 				body: [file: new File("/home/psingh_singh361/test/output.png")],
        				headers: [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type" : "image/png"]
         			)
+			
 			this.script.echo "4"
 			this.script.echo response.status 
 			return reponse.data
