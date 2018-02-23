@@ -12,7 +12,7 @@ import static groovyx.net.http.ContentType.JSON
 import java.io.File 
 import groovyx.net.http.HTTPBuilder
 
-class Artifact implements Serializable {
+class ArtifactStorage implements Serializable {
   def config
   def script
 
