@@ -1,4 +1,4 @@
-package org.k9.storage
+package org.k9.storagetest
 
 @Grapes([
  @Grab (group = 'org.codehaus.groovy.modules.http-builder', module = 'http-builder', version = '0.5.0'),
