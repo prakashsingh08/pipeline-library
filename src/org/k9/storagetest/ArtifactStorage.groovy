@@ -89,7 +89,7 @@ class ArtifactStorage implements Serializable {
 			// by prakash
 			 
  def http = new HTTPBuilder("https://www.googleapis.com")
- def file = new File("/home/psingh_singh361/test/output.png")
+ def file = new File("/opt/soft/output3333.png")
  
  http.request(Method.POST) { req ->
  uri.path = "/upload/storage/v1/b/"+this.config.bucket+"/o"
