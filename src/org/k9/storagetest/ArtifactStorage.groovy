@@ -72,7 +72,7 @@ class ArtifactStorage implements Serializable {
 //query.uploadType = 'media' 
 //query.name = 'output111.png'
 // uploadType = 'media',
-query = [uploadType = 'multipart', name = 'output111.png']
+uri.query = [uploadType = 'multipart', name = 'output111.png']
 	 this.script.echo "4"
 headers = [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type" : "image/png"]
 
