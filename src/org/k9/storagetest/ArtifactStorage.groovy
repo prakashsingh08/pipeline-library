@@ -30,32 +30,6 @@ class ArtifactStorage implements Serializable {
     this.script = script
   }
 
-  boolean bucketValidation(){
-	def bucketValidation=false 
-	def url = "https://www.googleapis.com"
-	def client = new RESTClient(url)
-	def response = client.get(path: "/storage/v1/b",
-		query: [project:this.config.project],
-		headers: [Authorization: 'Bearer '+ this.config.accesstoken]
-		)
- 	this.script.echo "1.1"
-        def slurper = new JsonSlurper().parseText(response.data.toString())
-	List bucketList = slurper.items
-	bucketList.each{
-    	    if(bucketValidation==false)
-	    {
-		this.script.echo it.id
-                if(it.id == this.config.bucket)
-                {
-                   bucketValidation=true
-		  this.script.echo "1.2"
-                }
-            }
-        }
-	this.script.echo "1.3"
-	return bucketValidation
-  }
-
   @NonCPS 
   def upload() {
     this.script.stage('Upload Artifcat') {
@@ -98,7 +72,7 @@ class ArtifactStorage implements Serializable {
 //query.uploadType = 'media' 
 //query.name = 'output111.png'
 // uploadType = 'media',
-//query = [uploadType = 'media', name = 'output111.png']
+query = [uploadType = 'multipart', name = 'output111.png']
 	 this.script.echo "4"
 headers = [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type" : "image/png"]
 
