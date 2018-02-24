@@ -107,7 +107,7 @@ uri.headers = [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type"
  
  // Adding Multi-part file parameter "imageFile"
  
- multiPartContent.addPart("png", new FileBody(( File ) file, 'image/jpeg' ))
+ multiPartContent.addPart("png", new FileBody(( File ) file, 'image/png' ))
  
 
  
