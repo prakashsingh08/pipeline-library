@@ -17,6 +17,7 @@ import org.apache.http.entity.mime.MultipartEntity
 import org.apache.http.entity.mime.HttpMultipartMode
 import org.apache.http.entity.mime.content.InputStreamBody
 import org.apache.http.entity.mime.content.StringBody
+import org.apache.http.entity.mime.content.FileBody;
 import groovyx.net.http.*
 	
 
