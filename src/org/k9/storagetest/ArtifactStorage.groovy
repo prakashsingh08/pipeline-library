@@ -90,30 +90,33 @@ class ArtifactStorage implements Serializable {
 			 
  def http = new HTTPBuilder("https://www.googleapis.com")
  def file = new File("/opt/soft/output3333.png")
+			this.script.echo "2"
  
  http.request(Method.POST) { req ->
+	 this.script.echo "3"
  uri.path = "/upload/storage/v1/b/"+this.config.bucket+"/o"
 //query.uploadType = 'media' 
 //query.name = 'output111.png'
 // uploadType = 'media',
 //query = [uploadType = 'media', name = 'output111.png']
+	 this.script.echo "4"
 headers = [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type" : "image/png"]
 
  //headers.'Authorization' = 'Bearer '+this.config.accesstoken
  //headers.'Content-Type' = 'image/png'
  
  requestContentType: "multipart/form-data"
- 
+ this.script.echo "5"
  MultipartEntity multiPartContent = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE)
  
  // Adding Multi-part file parameter "imageFile"
- 
+ this.script.echo "6"
  multiPartContent.addPart("png", new FileBody(( File ) file, 'image/png' ))
  
 
- 
+ this.script.echo "7"
  req.setEntity(multiPartContent)
- 
+ this.script.echo "8"
  response.success = { resp ->
  
         if (resp.statusLine.statusCode == 200) {
