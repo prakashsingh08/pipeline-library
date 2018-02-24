@@ -117,14 +117,7 @@ headers = [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type" : "
  this.script.echo "7"
  req.setEntity(multiPartContent)
  this.script.echo "8"
- response.success = { resp ->
- 
-        if (resp.statusLine.statusCode == 200) {
- 
-                  // response handling
- 
-                   }
-            }
+
       }
 			
 			
@@ -134,8 +127,8 @@ headers = [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type" : "
 			
 			
 			this.script.echo "4"
-			this.script.echo response.status 
-			return reponse.data
+			//this.script.echo response.status 
+			//return reponse.data
 			//return str
 		}	
 	}
