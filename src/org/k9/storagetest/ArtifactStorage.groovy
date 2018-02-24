@@ -12,6 +12,14 @@ import static groovyx.net.http.ContentType.JSON
 import java.io.File 
 import groovyx.net.http.HTTPBuilder
 
+//by prakash
+import org.apache.http.entity.mime.MultipartEntity
+import org.apache.http.entity.mime.HttpMultipartMode
+import org.apache.http.entity.mime.content.InputStreamBody
+import org.apache.http.entity.mime.content.StringBody
+import groovyx.net.http.*
+	
+
 class ArtifactStorage implements Serializable {
   def config
   def script
@@ -58,19 +66,61 @@ class ArtifactStorage implements Serializable {
 
 //def str=this.script.sh(script: 'curl -X POST --data-binary @/tmp/workspace/new/target/spring-boot-rest-example-0.5.0.war     -H "Authorization: Bearer ya29.GlxqBYhJRtEjqRjq8KRfHm5uKFSWB6YfDfeTjB4xDYk6s6BPgjiXlH76B4A2gYTgv16VSUQlOpFHNaIHMpRCbTcftHuvzoAGRYHtKQvu-ELY6QTVQ907iwJzoZxZnA"     -H "Content-Type: application/java-archive"     "https://www.googleapis.com/upload/storage/v1/b/jas-1893/o?uploadType=media&name=a.war"' , returnStdout: true)
 
-			this.script.echo "2"
-			def url = "https://www.googleapis.com"
+//			this.script.echo "2"
+//			def url = "https://www.googleapis.com"
 //			def client = new RESTClient(url)
-			def client = new HTTPBuilder(url)
-			this.script.echo "3"
-			this.script.echo "${this.script.env.WORKSPACE}"
+//			def client = new HTTPBuilder(url)
+	//		this.script.echo "3"
+	//		this.script.echo "${this.script.env.WORKSPACE}"
 			//def file1 = new File("/tmp/workspace/new/target/spring-boot-rest-example-0.5.0.war")
-        		def response = client.post(path: "/upload/storage/v1/b/"+this.config.bucket+"/o",
-   		     		query: [uploadType: 'media', name: 'output-222.png'],
+        //		def response = client.post(path: "/upload/storage/v1/b/"+this.config.bucket+"/o",
+   	//	     		query: [uploadType: 'media', name: 'output-222.png'],
 	//			body: [file: new File("/home/psingh_singh361/test/spring-boot-web-jsp-1.0.war")],
-	                        body: [file: new File("/home/psingh_singh361/test/output.png")],
-       				headers: [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type" : "image/png"]
-        			)
+	//                        body: [file: new File("/home/psingh_singh361/test/output.png")],
+       	//			headers: [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type" : "image/png"]
+        //			)
+			
+			
+			
+			
+			
+			
+			// by prakash
+			 
+ def http = new HTTPBuilder("https://www.googleapis.com")
+ 
+ http.request(Method.POST) { req ->
+ uri.path = "/upload/storage/v1/b/"+this.config.bucket+"/o"
+query.uploadType = 'media' 
+query.name = 'output111.png'
+
+ headers.'Authorization' = 'Bearer '+this.config.accesstoken
+ headers.'Content-Type' = 'image/png'
+ 
+ requestContentType: "multipart/form-data"
+ 
+ MultipartEntity multiPartContent = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE)
+ 
+ // Adding Multi-part file parameter "imageFile"
+ 
+ multiPartContent.addPart("/home/psingh_singh361/test/output.png", new InputStreamBody(/home/psingh_singh361/test/output.png.inputStream, /home/psingh_singh361/test/output.png.contentType, multipartImageFile.originalFilename))
+ 
+
+ 
+ req.setEntity(multiPartContent)
+ 
+ response.success = { resp ->
+ 
+        if (resp.statusLine.statusCode == 200) {
+ 
+                  // response handling
+ 
+                   }
+            }
+      }
+			
+			
+			
 			
 			this.script.echo "4"
 			this.script.echo response.status 
