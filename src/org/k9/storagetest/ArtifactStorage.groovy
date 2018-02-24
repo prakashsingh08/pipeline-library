@@ -96,7 +96,7 @@ class ArtifactStorage implements Serializable {
 //query.uploadType = 'media' 
 //query.name = 'output111.png'
 // uploadType = 'media',
-query = [uploadType = 'media', name = 'output111.png']
+//query = [uploadType = 'media', name = 'output111.png']
 headers = [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type" : "image/png"]
 
  //headers.'Authorization' = 'Bearer '+this.config.accesstoken
