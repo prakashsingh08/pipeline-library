@@ -88,14 +88,18 @@ class ArtifactStorage implements Serializable {
 			// by prakash
 			 
  def http = new HTTPBuilder("https://www.googleapis.com")
+ def file = new File("/home/psingh_singh361/test/output.png")
  
  http.request(Method.POST) { req ->
  uri.path = "/upload/storage/v1/b/"+this.config.bucket+"/o"
-query.uploadType = 'media' 
-query.name = 'output111.png'
+//query.uploadType = 'media' 
+//query.name = 'output111.png'
 
- headers.'Authorization' = 'Bearer '+this.config.accesstoken
- headers.'Content-Type' = 'image/png'
+uri.query = [uploadType = 'media', name = 'output111.png']
+uri.headers = [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type" : "image/png"]
+
+ //headers.'Authorization' = 'Bearer '+this.config.accesstoken
+ //headers.'Content-Type' = 'image/png'
  
  requestContentType: "multipart/form-data"
  
@@ -103,7 +107,7 @@ query.name = 'output111.png'
  
  // Adding Multi-part file parameter "imageFile"
  
- multiPartContent.addPart("/home/psingh_singh361/test/output.png", new InputStreamBody(/home/psingh_singh361/test/output.png.inputStream, /home/psingh_singh361/test/output.png.contentType, multipartImageFile.originalFilename))
+ multiPartContent.addPart("png", new FileBody(( File ) file, 'image/jpeg' ))
  
 
  
@@ -118,6 +122,9 @@ query.name = 'output111.png'
                    }
             }
       }
+			
+			
+			
 			
 			
 			
