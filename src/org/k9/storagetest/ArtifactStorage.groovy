@@ -95,8 +95,8 @@ class ArtifactStorage implements Serializable {
  uri.path = "/upload/storage/v1/b/"+this.config.bucket+"/o"
 //query.uploadType = 'media' 
 //query.name = 'output111.png'
-
-uri.query = [uploadType = 'media', name = 'output111.png']
+// uploadType = 'media',
+uri.query = [ name = 'output111.png']
 uri.headers = [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type" : "image/png"]
 
  //headers.'Authorization' = 'Bearer '+this.config.accesstoken
