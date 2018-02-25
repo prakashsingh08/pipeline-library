@@ -71,7 +71,7 @@ class ArtifactStorage implements Serializable {
 // uploadType = 'media',
 uri.query = [uploadType: 'media', name: 'spring-boot-web-jsp-1.0new.war']
    this.script.echo "4"
-headers = [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type" : "application/java-archive"]
+headers = [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type" : "application/octet-stream"]
 
  //headers.'Authorization' = 'Bearer '+this.config.accesstoken
  //headers.'Content-Type' = 'image/png'
@@ -84,7 +84,7 @@ headers = [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type" : "
  // Adding Multi-part file parameter "imageFile"
  this.script.echo "6"
 // multiPartContent.addPart("png", new FileBody(( File ) file, 'image/png' ))
-    multiPartContent.addPart("png", new FileBody(file, 'application/java-archive' ))
+    multiPartContent.addPart("png", new FileBody(file, 'application/octet-stream' ))
  
 
  this.script.echo "7"
