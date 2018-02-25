@@ -79,7 +79,7 @@ headers = [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type" : "
  //headers.'Authorization' = 'Bearer '+this.config.accesstoken
  //headers.'Content-Type' = 'image/png'
  
- requestContentType: "multipart/form-data"
+// requestContentType: "multipart/form-data"
 //	 requestContentType: "BINARY"
  this.script.echo "5"
  MultipartEntity multiPartContent = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE)
