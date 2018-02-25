@@ -86,7 +86,8 @@ headers = [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type" : "
  
  // Adding Multi-part file parameter "imageFile"
  this.script.echo "6"
- multiPartContent.addPart("png", new FileBody(( File ) file, 'image/png' ))
+// multiPartContent.addPart("png", new FileBody(( File ) file, 'image/png' ))
+	  multiPartContent.addPart("png", new FileBody(( File ) file, 'BINARY' ))
  
 
  this.script.echo "7"
