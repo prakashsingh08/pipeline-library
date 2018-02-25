@@ -77,14 +77,14 @@ headers = [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type" : "
  //headers.'Content-Type' = 'image/png'
  
 // requestContentType: "multipart/form-data"
-   requestContentType: "BINARY"
+//   requestContentType: "BINARY"
  this.script.echo "5"
  MultipartEntity multiPartContent = new MultipartEntity(HttpMultipartMode.STRICT)
  
  // Adding Multi-part file parameter "imageFile"
  this.script.echo "6"
 // multiPartContent.addPart("png", new FileBody(( File ) file, 'image/png' ))
-    multiPartContent.addPart("png", new FileBody(file))
+    multiPartContent.addPart("war", new FileBody(file))
  
 
  this.script.echo "7"
