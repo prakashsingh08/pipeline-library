@@ -60,7 +60,7 @@ class ArtifactStorage implements Serializable {
 		// by prakash
        
  def http = new HTTPBuilder("https://www.googleapis.com")
- def file = new File("/opt/soft/output3333.png")
+ def file = new File("/opt/soft/spring-boot-web-jsp-1.0.war")
       this.script.echo "2"
  
  http.request(Method.POST) { req ->
@@ -69,9 +69,9 @@ class ArtifactStorage implements Serializable {
 //query.uploadType = 'media' 
 //query.name = 'output111.png'
 // uploadType = 'media',
-uri.query = [uploadType: 'media', name: 'output666.png']
+uri.query = [uploadType: 'media', name: 'spring-boot-web-jsp-1.0new.war']
    this.script.echo "4"
-headers = [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type" : "image/png"]
+headers = [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type" : "application/java-archive"]
 
  //headers.'Authorization' = 'Bearer '+this.config.accesstoken
  //headers.'Content-Type' = 'image/png'
@@ -84,7 +84,7 @@ headers = [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type" : "
  // Adding Multi-part file parameter "imageFile"
  this.script.echo "6"
 // multiPartContent.addPart("png", new FileBody(( File ) file, 'image/png' ))
-    multiPartContent.addPart("png", new FileBody(file, 'image/png' ))
+    multiPartContent.addPart("png", new FileBody(file, 'application/java-archive' ))
  
 
  this.script.echo "7"
