@@ -72,7 +72,7 @@ class ArtifactStorage implements Serializable {
 uri.query = [uploadType: 'multipart', name: 'output666.png']
 	 this.script.echo "4"
 headers = [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type" : "image/png", "Accept" : "application/octet-stream"]
- requestContentType: "multipart/form-data"
+ requestContentType: "BINARY"
  this.script.echo "5"
  MultipartEntity multiPartContent = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE)
  this.script.echo "6"
