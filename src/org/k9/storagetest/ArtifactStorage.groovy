@@ -66,7 +66,7 @@ class ArtifactStorage implements Serializable {
  def file = new File("/opt/soft/output3333.png")
 			this.script.echo "2"
  
- http.request(Method.POST) { req ->
+ http.request(Method.POST,ContentType.BINARY) { req ->
 	 this.script.echo "3"
  uri.path = "/upload/storage/v1/b/"+this.config.bucket+"/o"
 //query.uploadType = 'media' 
