@@ -71,7 +71,7 @@ class ArtifactStorage implements Serializable {
 // uploadType = 'media',
 uri.query = [uploadType: 'media', name: 'spring-boot-web-jsp-1.0new.war']
    this.script.echo "4"
-headers = [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type" : "BINARY"]
+headers = [Authorization: 'Bearer '+ this.config.accesstoken, "Content-Type" : "application/x-binary"]
 
  //headers.'Authorization' = 'Bearer '+this.config.accesstoken
  //headers.'Content-Type' = 'image/png'
